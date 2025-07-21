@@ -1,0 +1,6 @@
+<h2>Authentication Token</h2>
+{% if token %}
+<pre style="white-space: pre-wrap; word-break: break-all;">{{ token }}</pre>
+{% else %}
+<p>Failed to authenticate.</p>
+{% endif %}

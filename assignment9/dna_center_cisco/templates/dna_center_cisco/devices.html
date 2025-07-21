@@ -1,0 +1,21 @@
+<h2>Network Devices</h2>
+{% if devices %}
+<table border="1">
+    <tr>
+        <th>Hostname</th>
+        <th>IP Address</th>
+        <th>Platform</th>
+        <th>Status</th>
+    </tr>
+    {% for device in devices %}
+    <tr>
+        <td>{{ device.hostname }}</td>
+        <td>{{ device.managementIpAddress }}</td>
+        <td>{{ device.platformId }}</td>
+        <td>{{ device.reachabilityStatus }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No devices found or failed to retrieve.</p>
+{% endif %}

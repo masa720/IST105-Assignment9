@@ -1,0 +1,28 @@
+<h2>Device Interfaces</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Device IP Address:</label>
+    <input type="text" name="device_ip" value="{{ device_ip|default:'' }}" required>
+    <button type="submit">Show Interfaces</button>
+</form>
+
+{% if interfaces %}
+<table border="1">
+    <tr>
+        <th>Interface</th>
+        <th>Status</th>
+        <th>VLAN</th>
+        <th>Speed</th>
+    </tr>
+    {% for intf in interfaces %}
+    <tr>
+        <td>{{ intf.portName }}</td>
+        <td>{{ intf.status }}</td>
+        <td>{{ intf.vlanId }}</td>
+        <td>{{ intf.speed }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% elif device_ip %}
+<p>No interfaces found or failed to retrieve.</p>
+{% endif %}
